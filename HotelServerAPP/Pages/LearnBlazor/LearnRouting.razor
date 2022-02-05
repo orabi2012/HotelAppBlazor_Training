@@ -1,0 +1,22 @@
+﻿@page "/LearnRouting"
+@page "/newrouting"
+@page "/newrouting/{name}/{age}"
+@page "/newrouting/{salary:int}"
+<h3>LearnRouting</h3>
+<h5>Name : @name</h5>
+<h5>Age : @age</h5>
+<h5>Salary : @salary</h5>
+<NavLink class="btn btn-primary"
+         href="learnadvancedrouting?FName=Muhammad&LName=Awadallah">
+    <span class="oi oi-list-rich" aria-hidden="true"></span>
+    Routing With Query Params
+</NavLink>
+
+@code {
+    [Parameter]
+    public string name { get; set; }
+    [Parameter]
+    public string age { get; set; }
+    [Parameter]
+    public int salary { get; set; }
+}

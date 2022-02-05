@@ -1,0 +1,24 @@
+﻿@page "/ParentComponent"
+<h3 class="text-warning">Parent Component</h3>
+<button class="btn btn-success mb-3" @onclick="()=>ChildComponent.DisplayToastrSuccess()">Display Success Toastr</button>
+<!--<ChildComponent Title="This title passed as a parameter from Parent">
+    <ChildContent>Render Fragment From Parent</ChildContent>
+</ChildComponent>
+<ChildComponent Title="This title passed as a parameter from Parent">-->
+@*<NewChildContent>New Content is Here</NewChildContent>*@
+<!--</ChildComponent>
+<ChildComponent Title="This is Second Component">
+</ChildComponent>
+
+<AnotherChildComponent></AnotherChildComponent>-->
+<CascadingValue Value="@MessageForGrandChild" Name="message">
+    <CascadingValue Value="@GrandParentAge" Name="age">
+        <ChildComponent @ref="ChildComponent">
+        </ChildComponent>
+    </CascadingValue>
+</CascadingValue>
+@code {
+    private ChildComponent ChildComponent;
+    public string MessageForGrandChild = "this message from grand parent";
+    public string GrandParentAge = "92";
+}

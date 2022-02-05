@@ -1,0 +1,33 @@
+﻿@page "/learnadvancedrouting"
+@inject NavigationManager Navigation
+<h3>Learn Advanced Routing</h3>
+<h5>First Name : @FName</h5>
+<h5>Last Name : @LName</h5>
+<p>
+    <button class="btn btn-primary" @onclick="LoadParameters">Load Parameters</button>
+</p>
+<a href="/LearnRouting" class="btn btn-secondary">Back to Routing</a>
+<NavLink href="/LearnRouting" class="btn btn-warning">Back to Routing</NavLink>
+<button class="btn btn-success" @onclick="GoHome">Go Home</button>
+
+@code {
+
+    private string FName;
+    private string LName;
+
+    private void LoadParameters()
+    {
+        var absoluteUri = new Uri(Navigation.Uri);
+        var queryParams = System.Web.HttpUtility
+            .ParseQueryString(absoluteUri.Query);
+        FName = queryParams["FName"];
+        LName = queryParams["LName"];
+
+    }
+
+    private void GoHome()
+    {
+        Navigation.NavigateTo("");
+    }
+
+}
